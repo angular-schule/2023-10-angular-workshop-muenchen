@@ -7,5 +7,5 @@ bootstrapApplication(AppComponent, appConfig)
   .catch((err) => console.error(err));
 
 
-const test = new Test(42);
-console.log(test.zahl);
+// const test = new Test(42);
+// console.log(test.zahl);
