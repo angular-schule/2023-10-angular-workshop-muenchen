@@ -8,11 +8,10 @@ bootstrapApplication(AppComponent, appConfig)
 
 class Test {
 
-  blubb: boolean;
-
-  constructor(zahl: number) {
-    console.log('Test:', zahl);
+  constructor(public zahl: number) {
+    console.log('Test:', this.zahl);
   }
 }
 
 const test = new Test(42);
+console.log(test.zahl);
