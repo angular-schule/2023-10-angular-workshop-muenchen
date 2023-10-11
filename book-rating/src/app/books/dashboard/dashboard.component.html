@@ -5,9 +5,15 @@
  -->
 
 
- <div
+ <!-- <div
   *ngFor="let b of books; even as e"
   [ngClass]="{ grayBg: e }"
   >
    <app-book [book]="b" />
-</div>
+</div> -->
+
+
+<app-book
+  *ngFor="let b of books"
+  [book]="b"
+/>
