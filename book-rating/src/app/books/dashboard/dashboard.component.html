@@ -5,8 +5,9 @@
  -->
 
 
-<ng-container *ngFor="let b of books">
-  <ng-container *ngIf="b.title === 'Angular'">
-    {{ b.title }}
-  </ng-container>
-</ng-container>
+ <div
+  *ngFor="let b of books; even as e"
+  [ngClass]="{ grayBg: e }"
+  >
+   <app-book [book]="b" />
+</div>
