@@ -1,6 +1,7 @@
 import { Book } from './book';
 import { BookRatingService } from './book-rating.service';
 
+// JIRA-12123 (Weil der Chef das so will)
 describe('BookRatingService', () => {
   let service: BookRatingService;
   let book: Book;

@@ -2,14 +2,29 @@ import { TestBed } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './books/dashboard/dashboard.component';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
 
-fdescribe('AppComponent', () => {
+@Component({
+  selector: 'app-dashboard',
+  standalone: true,
+  template: '😎',
+})
+export class DummyDashboardComponent {
+}
+
+describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
     imports: [AppComponent]
 
-  }).overrideComponent(DashboardComponent, {
-    set: { imports: [], schemas: [NO_ERRORS_SCHEMA] }
+  })
+  // // Shallow Component Test
+  // .overrideComponent(AppComponent, {
+  //   set: { imports: [], schemas: [NO_ERRORS_SCHEMA] }
+  // })
+
+  .overrideComponent(AppComponent, {
+    remove: { imports: [DashboardComponent] },
+    add: { imports: [DummyDashboardComponent] }
   })
   );
 

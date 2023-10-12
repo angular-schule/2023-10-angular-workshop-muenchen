@@ -44,6 +44,7 @@ export class DashboardComponent {
 
   doRateUp(book: Book): void {
     const ratedBook = this.bs.rateUp(book);
+    // const ratedBook = { ...book, rating: book.rating + 1 };
     this.updateAndSortList(ratedBook);
   }
 
