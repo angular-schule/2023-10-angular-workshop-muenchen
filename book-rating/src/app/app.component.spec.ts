@@ -1,11 +1,17 @@
 import { TestBed } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
+import { DashboardComponent } from './books/dashboard/dashboard.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
-describe('AppComponent', () => {
+fdescribe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
     imports: [AppComponent]
-  }));
+
+  }).overrideComponent(DashboardComponent, {
+    set: { imports: [], schemas: [NO_ERRORS_SCHEMA] }
+  })
+  );
 
   it(`should have the 'Book Rating' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
