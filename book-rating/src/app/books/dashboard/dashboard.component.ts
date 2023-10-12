@@ -1,5 +1,5 @@
 import { NgClass, NgFor, NgIf } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
 import { BookComponent } from '../book/book.component';
 import { Book } from '../shared/book';
@@ -10,7 +10,8 @@ import { BookRatingService } from '../shared/book-rating.service';
   standalone: true,
   imports: [BookComponent, NgFor, NgIf, NgClass],
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardComponent {
 
@@ -36,6 +37,10 @@ export class DashboardComponent {
   ];
 
   bs = inject(BookRatingService);
+
+  constructor() {
+    // setTimeout(() => this.books = [], 3000);
+  }
 
   doRateUp(book: Book): void {
     const ratedBook = this.bs.rateUp(book);
