@@ -1,19 +1,6 @@
-<!--
-<app-book [book]="books[0]" />
-<app-book [book]="books[1]" />
-<app-book [book]="books[2]" />
- -->
-
-
- <!-- <div
-  *ngFor="let b of books; even as e"
-  [ngClass]="{ grayBg: e }"
-  >
-   <app-book [book]="b" />
-</div> -->
-
-
 <app-book
   *ngFor="let b of books"
   [book]="b"
+  (rateUp)="doRateUp($event)"
+  (rateDown)="doRateDown($event)"
 />

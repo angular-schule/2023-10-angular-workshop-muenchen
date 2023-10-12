@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
-import { CommonModule, JsonPipe, NgClass, NgFor, NgIf, UpperCasePipe } from '@angular/common';
-import { Book } from '../shared/book';
+import { NgClass, NgFor, NgIf } from '@angular/common';
+import { Component, inject } from '@angular/core';
+
 import { BookComponent } from '../book/book.component';
+import { Book } from '../shared/book';
+import { BookRatingService } from '../shared/book-rating.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -31,6 +33,23 @@ export class DashboardComponent {
       description: 'Blödes Buch',
       rating: 1
     }
-  ]
+  ];
 
+  bs = inject(BookRatingService);
+
+  doRateUp(book: Book): void {
+    const ratedBook = this.bs.rateUp(book);
+    this.updateAndSortList(ratedBook);
+  }
+
+  doRateDown(book: Book): void {
+    const ratedBook = this.bs.rateDown(book);
+    this.updateAndSortList(ratedBook);
+  }
+
+  updateAndSortList(ratedBook: Book): void {
+    this.books = this.books
+      .map(b => b.isbn === ratedBook.isbn ? ratedBook : b)
+      .sort((a, b) => b.rating - a.rating)
+  }
 }
