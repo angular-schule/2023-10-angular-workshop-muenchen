@@ -10,16 +10,16 @@ describe('DashboardComponent', () => {
 
   beforeEach(() => {
 
-    const bookRatingMock = {
-      rateUp: (book: Book) => book
-    }
+    // const bookRatingMock = {
+    //   rateUp: (book: Book) => book
+    // }
 
     TestBed.configureTestingModule({
       imports: [DashboardComponent],
-      providers: [{
-        provide: BookRatingService,
-        useValue: bookRatingMock
-      }]
+      // providers: [{
+      //   provide: BookRatingService,
+      //   useValue: bookRatingMock
+      // }]
     });
     fixture = TestBed.createComponent(DashboardComponent);
     component = fixture.componentInstance;
