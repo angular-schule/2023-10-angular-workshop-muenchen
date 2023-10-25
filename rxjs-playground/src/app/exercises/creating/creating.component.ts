@@ -24,7 +24,19 @@ export class CreatingComponent {
 
     /******************************/
 
-    
+    // observer
+    const observer = {
+      next: (e: string) => this.log(e),
+      error: (e: any) => this.log('ERROR ' + e),
+      complete: () => this.log('COMPLETE')
+    }
+
+    // observable
+    of('🤪', '😎', '😊').subscribe(observer);
+
+    // TODO: unsubscribe!
+
+
     /******************************/
   }
 
