@@ -3,8 +3,12 @@
 ></app-book-create>
 
 <app-book
-  *ngFor="let b of books"
+  *ngFor="let b of books$ | async"
   [book]="b"
   (rateUp)="doRateUp($event)"
   (rateDown)="doRateDown($event)"
 />
+
+<h4 *ngIf="loading$ | async">Loading...</h4>
+
+Anzahl der Bücher: {{ (books$ | async)?.length }}
