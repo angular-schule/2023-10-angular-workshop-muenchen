@@ -23,7 +23,7 @@ export class DashboardComponent {
   storeService = inject(BookStoreService);
 
   constructor() {
-    this.storeService.getAllBooks().subscribe(books => this.books = books);
+    // this.storeService.getAllBooks().subscribe(books => this.books = books);
   }
 
   doRateUp(book: Book): void {
