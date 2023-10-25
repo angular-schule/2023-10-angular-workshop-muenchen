@@ -1,13 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { map, mergeMap } from 'rxjs';
+import { BookStoreService } from '../shared/book-store.service';
 
 @Component({
   selector: 'app-book-details',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './book-details.component.html',
   styleUrls: ['./book-details.component.scss']
 })
 export class BookDetailsComponent {
 
+  bookStore = inject(BookStoreService);
+
+  book$ = inject(ActivatedRoute).paramMap.pipe(
+    map(param => param.get('isbn') || ''),
+    mergeMap(isbn => this.bookStore.getSingleBook(isbn))
+  )
 }
