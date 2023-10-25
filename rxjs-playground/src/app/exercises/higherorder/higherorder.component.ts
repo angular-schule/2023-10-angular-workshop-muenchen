@@ -29,7 +29,10 @@ export class HigherorderComponent {
 
     /**************!!**************/
 
+    this.es.echo('Katze').subscribe(tier => console.log(tier));
+
     this.result$ = this.source$.pipe(
+
     );
 
     /**************!!**************/
